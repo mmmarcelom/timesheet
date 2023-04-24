@@ -1,0 +1,60 @@
+function registrarPonto(){
+  let ss = SpreadsheetApp.getActive()
+  let ponto = ss.getSheetByName('Ponto')
+  
+  let hoje = new Date(new Date().toDateString());
+
+  let dia_util = hoje.getDay()>0 && hoje.getDay()<6
+
+  let feriados = ponto.getRange("H1:H").getValues().filter(String).map(value => value[0])
+
+  if(dia_util && !feriados.includes(hoje)){
+    
+    let projetos = [
+      ['Footbao', 8]
+    ]
+    
+    let atividades = [
+      ['Outras Atividades de PO ou SM', 8]
+    ]
+
+    preencherForm(hoje, projetos, atividades)
+    ponto.getRange(ponto.getLastRow(),1,1, 3).setValues([
+      [
+        new Date(), 
+        projetos.join(','), 
+        atividades.join(',')
+      ]
+    ])
+  }
+
+}
+
+function preencherForm(data, projetos, atividades){
+  let formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdoZq1hfJHASsJ7Jp6oNuQZ7sJfMk00itl2AEwdf7kFc_hZWw/viewform' + '?usp=pp_url'
+
+  let filledURL = (
+    `&entry.676584895_day=${+data.getDate()}` + 
+    `&entry.676584895_month=${+data.getMonth()+1}` +
+    `&entry.676584895_year=${+data.getFullYear()}`
+  )
+
+  let mapa_chaves = {
+    'Footbao': 'entry.435032501',
+    'Outras Atividades de PO ou SM': 'entry.717603580',
+    'Ritos (Scrum, Kanban ou similares)': 'entry.2141518373'
+  }
+
+  console.log(projetos)
+  console.log(atividades)
+
+  projetos.map(function(projeto){ 
+    filledURL = filledURL + `&${mapa_chaves[projeto[0]]}=${projeto[1]}` 
+  })
+  
+  atividades.map(function(atividade){ 
+    filledURL = filledURL + `&${mapa_chaves[atividade[0]]}=${atividade[1]}` 
+  })
+
+  UrlFetchApp.fetch(formUrl + filledURL)
+}

@@ -31,7 +31,7 @@ function registrarPonto(){
 }
 
 function preencherForm(data, projetos, atividades){
-  let formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdoZq1hfJHASsJ7Jp6oNuQZ7sJfMk00itl2AEwdf7kFc_hZWw/viewform' + '?usp=pp_url'
+  let formUrl = 'https://docs.google.com/forms/d/e/<INSIRA O ID DA PLANILHA>/viewform' + '?usp=pp_url'
 
   let filledURL = (
     `&entry.676584895_day=${+data.getDate()}` + 
@@ -40,7 +40,7 @@ function preencherForm(data, projetos, atividades){
   )
 
   let mapa_chaves = {
-    'Footbao': 'entry.435032501',
+    '<INSIRA O NOME DO PROJETO>': 'entry.435032501',
     'Outras Atividades de PO ou SM': 'entry.717603580',
     'Ritos (Scrum, Kanban ou similares)': 'entry.2141518373'
   }

@@ -14,7 +14,9 @@ No outro campo, as atividades e a quantidade de horas.
 
 Cansado de esquecer de preencher o ponto todo dia, o funcionário decidiu fazer uma breve automação no google sheets + scripts
 
-## 1. Para aplicar o projeto que ele fez, crie uma planilha do google.  
+# Para aplicar o projeto a automação
+
+## 1. Crie uma planilha do google.  
 
 ## 2. Preencha os cabeçalhos  
 ![image](https://user-images.githubusercontent.com/52570539/234139457-b6419489-79b3-4681-9e98-3018e3e37483.png)

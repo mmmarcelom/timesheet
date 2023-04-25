@@ -11,8 +11,16 @@ function registrarPonto(){
   if(dia_util && !feriados.includes(hoje)){
     
     let projetos = [
-      ['Footbao', 8]
+      ['<NOME DO PROJETO>', 8]
     ]
+ 
+    // Se fossem vários, bastava criar um novo array para cada projeto diferente
+    // ['<NOME DO PROJETO 1>', 2],
+    // ['<NOME DO PROJETO 2>', 3],
+    // ['<NOME DO PROJETO 3>', 3],
+    // ...
+    // ['<NOME DO PROJETO n>', 1]
+    
     
     let atividades = [
       ['Outras Atividades de PO ou SM', 8]
